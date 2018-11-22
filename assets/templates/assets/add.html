@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}添加设备{% endblock %}
+{% block css %}
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        添加设备
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li>设备总表</li>
+        <li class="active">添加设备</li>
+      </ol>
+    </section>
+
+
+    <div class="container">
+        <div class="col-md-offset-4 col-md-4">
+            <form class="form-register"  method="post">
+                {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endif %}
+                {% csrf_token %}
+
+
+                <h2 class="text-center">添加设备</h2>
+
+                <div class="form-group">
+                    {{ register_form.asset_type.label_tag }}
+                    {{ register_form.asset_type }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.name.label_tag }}
+                    {{ register_form.name }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.sn.label_tag }}
+                    {{ register_form.sn }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.manufacturer.label_tag }}
+                    {{ register_form.manufacturer }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.status.label_tag }}
+                    {{ register_form.status }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.idc.label_tag }}
+                    {{ register_form.idc }}
+                </div>
+                <div class="form-group">
+                    {{ register_form.purchase_day.label_tag }}
+                    {{ register_form.purchase_day }}
+                </div>
+
+
+
+                <button type="reset" class="btn btn-default pull-left">重置</button>
+                <button type="submit" class="btn btn-primary pull-right">提交</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
